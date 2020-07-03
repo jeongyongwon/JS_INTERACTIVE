@@ -1,88 +1,199 @@
 
 
 
-function BlackToGreen() {
-  const blackPage = document.querySelector('.blackPage')
-  const greenPage = document.querySelector('.greenPage')
 
+
+
+
+/* 오른쪽,왼쪽 이동 */
+(function() {
+
+    const eventClick = document.querySelector('.event-click');
+    const rightWall = document.querySelector('.right-wall');
+    const containerInner = document.querySelector('.container-inner');
+    
+
+    let i = 1;
+    let j = 1;
+
+    function goRight(event) {
+      const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+      if (event.target.classList.contains('right-wall') || event.target.parentNode.classList.contains('right-wall')) {
+        i++;
+        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        nowContainer.classList.remove('move-on');
+        nowContainer.classList.add('hidden-left');
+        nextContainer.classList.remove('hidden-right');
+        nextContainer.classList.add('move-on');
+      };
+      if ((event.target.classList.contains('right-wall') || event.target.parentNode.classList.contains('right-wall')) && i === 2) {
+        setTimeout(nowPageRemove, 1000);
+      }
+      
+    };
   
-  greenPage.classList.remove('hidden-bottom')
-  greenPage.classList.add('Viewing')
+    function goLeft(event) {
+      const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+      if (event.target.classList.contains('left-wall') || event.target.parentNode.classList.contains('left-wall')) {
+        i--;
+        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        nowContainer.classList.remove('move-on');
+        nowContainer.classList.add('hidden-right');
+        nextContainer.classList.remove('hidden-left');
+        nextContainer.classList.add('move-on');
+      };
+      if (i === 1) {
+        nowPage();
+      }
+    };
+
+    function nowPage() {
+      if (!containerInner.classList.contains('now')) {
+        containerInner.classList.add('now');
+      }
+    };
+
+    function nowPageRemove() {
+      containerInner.classList.remove('now');
+    }
+
+    function goDesription(event) {
+      const contain1item2 = document.querySelector('.total:nth-child(1) .container:nth-child(1) .item:nth-child(3)')
+      const contain4item1 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(2)')
+      const contain4item2 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(3)')
+      if (event.target === contain1item2) {
+        contain1item2.style.opacity = 0.3;
+      }
+      if (event.target === contain4item1) {
+        contain4item1.style.opacity = 0.3;
+      }
+      if (event.target === contain4item2) {
+        contain4item2.style.opacity = 0.3;
+      }
+
+    }
+    function deleteDesription(event) {
+      const contain1item2 = document.querySelector('.total:nth-child(1) .container:nth-child(1) .item:nth-child(3)')
+      const contain4item1 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(2)')
+      const contain4item2 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(3)')
+      if (event.target === contain1item2) {
+        contain1item2.style.opacity = 1; 
+      }
+      if (event.target === contain4item1) {
+        contain4item1.style.opacity = 1;
+        
+      }
+      if (event.target === contain4item2) {
+        contain4item2.style.opacity = 1;
+      }
+    }
 
     
-}
-
-
-function GreenToIntro() {
+    eventClick.addEventListener('click', goRight);
+    eventClick.addEventListener('click', goLeft);
+    eventClick.addEventListener('mouseover', goDesription);
+    eventClick.addEventListener('mouseout', deleteDesription);
     
-    const greenPage = document.querySelector('.greenPage')
-    const IntroPage = document.querySelector('.IntroPage')
+    window.addEventListener('keydown', function(event) {
+      if (i !== 4 && event.keyCode === 39) {
+        const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+        i++;
+        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        nowContainer.classList.remove('move-on');
+        nowContainer.classList.add('hidden-left');
+        nextContainer.classList.remove('hidden-right');
+        nextContainer.classList.add('move-on');
+      if (i === 2) {
+        setTimeout(nowPageRemove, 1000);
+      } 
+      console.log(i)
+      };
+    })
 
+    window.addEventListener('keydown', function(event) {
+      if (i !== 1 && event.keyCode === 37) {
+        const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+        i--;
+        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        nowContainer.classList.remove('move-on');
+        nowContainer.classList.add('hidden-right');
+        nextContainer.classList.remove('hidden-left');
+        nextContainer.classList.add('move-on');
+        if (i === 1) {
+          nowPage();
+      };
+      console.log(i)
+      }
+    })
+
+
+    function BlackToGreen() {
+      const blackPage = document.querySelector('.blackPage')
+      const greenPage = document.querySelector('.greenPage')
     
-    greenPage.classList.remove('Viewing')
-    IntroPage.classList.remove('unViewing')
+      
+      greenPage.classList.remove('hidden-bottom')
+      greenPage.classList.add('Viewing')
     
-    IntroPage.classList.add('Viewing')
-
-};
-
-
-function GridHover() {
-  const GridLayer = document.querySelectorAll('.layer')
-  const GridIndex = 0
-  for(let i=0; i<GridLayer.length; i++) {
+        
+    }
     
-    GridLayer[i].classList.add(`layer${i+1}`)
-  }
-
-}
-
-function IntroToIntro2() {
-  const IntroPage = document.querySelector('.IntroPage')
-  const IntroPage2 = document.querySelector('.IntroPage2')
-  const greenPage = document.querySelector('.greenPage')
-  const blackPage = document.querySelector('.blackPage')
-
-  // IntroPage2.classList.remove('hidden-bottom')
-  IntroPage2.classList.add('Viewing')
-  IntroPage.classList.remove('Viewing')
-  // IntroPage.classList.add('hidden-bottom')
-  greenPage.classList.add('hidden-bottom')
-  blackPage.classList.add('hidden-bottom')
-
-
-};
-
-function Intro2ToIntro3() {
     
-  const IntroPage2 = document.querySelector('.IntroPage2')
-  const IntroPage3 = document.querySelector('.IntroPage3')
-
-  
-  IntroPage2.classList.remove('Viewing')
-  IntroPage3.classList.remove('unViewing')
-  
-  IntroPage3.classList.add('Viewing')
-
-};
-
-function Intro2hover() {
-  const intro2Layer = document.querySelector('.intro2_layer')
+    function GreenToIntro() {
+        
+        const greenPage = document.querySelector('.greenPage')
+        const IntroPage = document.querySelector('.IntroPage')
+    
+        
+        greenPage.classList.remove('Viewing')
+        IntroPage.classList.remove('unViewing')
+        
+        IntroPage.classList.add('Viewing')
+    
+    };
+    
+    
+    function GridHover() {
+      const GridLayer = document.querySelectorAll('.layer')
+      const GridIndex = 0
+      for(let i=0; i<GridLayer.length; i++) {
+        
+        GridLayer[i].classList.add(`layer${i+1}`)
+      }
+    
+    }
+    
+    
+    
+    
+    
+    
+    // window.addEventListener('load', BlackToGreen);
    
-  intro2Layer.classList.add('intro2_layer_hover')
-};
+    setTimeout(BlackToGreen, 1000)
+    setTimeout(GreenToIntro, 4000)
+    setTimeout(GridHover, 5000)
+
+    window.addEventListener('keydown', function (event) {
+      
+      if (event.keyCode === 40 ) {
+        console.log('ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ')
+        i = 1;
+        j++;
+        console.log(j);
+        const nextTotal = document.querySelector(`.total:nth-child(${j})`);
+        eventClick.classList.remove('event-click');
+        eventClick.classList.add('hidden-bottom');
+        nextTotal.classList.remove('hidden-bottom');
+        nextTotal.classList.add('move-on');
+        nextTotal.classList.add('event-click')
+        nowPage();
+      } 
+    });
 
 
 
-// window.addEventListener('load', BlackToGreen);
-setTimeout(BlackToGreen, 1000)
-setTimeout(GreenToIntro, 4000)
-setTimeout(GridHover, 5000)
-// setTimeout(IntroToIntro2, 8000)
-// setTimeout(Intro2hover, 8500)
-// setTimeout(Intro2ToIntro3, 10000)
-// window.addEventListener('load', GreenToIntro);
-
-
-
+    
+    
+  })();
 

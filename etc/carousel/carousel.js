@@ -19,4 +19,7 @@ function slide() {
 slide()
 setInterval(slide ,2000)
 // 2초마다 슬라이드를 부르도록 설정 2sec = 2000 milisec
+<<<<<<< HEAD
 set
+=======
+>>>>>>> efb8678e255ae41d0410c6fa7e512dad4ff974d4
