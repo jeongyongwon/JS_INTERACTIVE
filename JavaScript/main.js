@@ -78,8 +78,8 @@ function Intro2hover() {
 setTimeout(BlackToGreen, 1000)
 setTimeout(GreenToIntro, 4000)
 setTimeout(GridHover, 5000)
-setTimeout(IntroToIntro2, 8000)
-setTimeout(Intro2hover, 8500)
+// setTimeout(IntroToIntro2, 8000)
+// setTimeout(Intro2hover, 8500)
 // setTimeout(Intro2ToIntro3, 10000)
 // window.addEventListener('load', GreenToIntro);
 

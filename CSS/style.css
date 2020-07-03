@@ -24,7 +24,16 @@
   justify-content: center;
   align-items: center;
   /* z-index: 1; */
+  font-size: 7vh;
+  font-weight: bolder;
+  font-style: italic;
 }
+
+.blackText {
+  transition: 2s cubic-bezier(1,-0.07, 0.87, 0.9);
+  
+}
+
 
 .hidden-bottom {
   transition: 2s cubic-bezier(1,-0.07, 0.87, 0.9);
@@ -79,10 +88,12 @@
 }
 
 .layer1 {
-  background-color: #020302;
+  /* background-color: #020302; */
   opacity: 0.8;
   transition: 2s cubic-bezier(1,-0.07, 0.87, 0.9);
   /* transform: translate(-100%, 0);   */
+  
+ 
 }
 
 .layer2 {
@@ -92,9 +103,9 @@
 .layer3 {
   display: flex;
   align-items: center;
-  background-color: #518E38; 
-  opacity: 0.4;
-  transition: 2s cubic-bezier(1,-0.07, 0.87, 0.9);
+  /* background-color: #518E38;  */
+  /* opacity: 0.4; */
+  transition: 1s cubic-bezier(1,-0.07, 0.87, 0.9);
   text-align: center;
   font-style: italic;
   font-size: 2em
@@ -104,13 +115,17 @@
 
 .layer3 h2 {
   position: absolute;
+  font-size: 2em;
   color: white;
-  transition: 0.5s cubic-bezier(1,-0.07, 0.87, 0.9);
+  -webkit-text-stroke: 1px black;
+  text-align: left;
+  font-style: italic;
+  transition: all ease 3s ;
 }
 
 .layer4 {
-  background-color: #020302;
-  opacity: 0.4;
+  /* background-color: #020302; */
+  /* opacity: 0.4; */
   transition: 2s cubic-bezier(1,-0.07, 0.87, 0.9);
   
   
@@ -121,6 +136,7 @@
   position: absolute;
   font-size: 5em;
   color: white;
+  -webkit-text-stroke: 1px black;
   text-align: left;
   font-style: italic;
   transition: all ease 3s ;
