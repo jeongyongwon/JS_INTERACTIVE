@@ -1,14 +1,8 @@
 
-
-
-
-
-
-
 /* 오른쪽,왼쪽 이동 */
 (function() {
 
-    const eventClick = document.querySelector('.event-click');
+    let eventClick = document.querySelector('.event-click');
     const rightWall = document.querySelector('.right-wall');
     const containerInner = document.querySelector('.container-inner');
     const firstPage = document.querySelector('.total')
@@ -59,9 +53,9 @@
     }
 
     function goDesription(event) {
-      const contain1item2 = document.querySelector('.total:nth-child(1) .container:nth-child(1) .item:nth-child(3)')
-      const contain4item1 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(2)')
-      const contain4item2 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(3)')
+      const contain1item2 = document.querySelector('.total:nth-child(2) .container:nth-child(1) .item:nth-child(3)')
+      const contain4item1 = document.querySelector('.total:nth-child(2) .container:nth-child(4) .item:nth-child(2)')
+      const contain4item2 = document.querySelector('.total:nth-child(2) .container:nth-child(4) .item:nth-child(3)')
       if (event.target === contain1item2) {
         contain1item2.style.opacity = 0.3;
       }
@@ -74,9 +68,9 @@
 
     }
     function deleteDesription(event) {
-      const contain1item2 = document.querySelector('.total:nth-child(1) .container:nth-child(1) .item:nth-child(3)')
-      const contain4item1 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(2)')
-      const contain4item2 = document.querySelector('.total:nth-child(1) .container:nth-child(4) .item:nth-child(3)')
+      const contain1item2 = document.querySelector('.total:nth-child(2) .container:nth-child(1) .item:nth-child(3)')
+      const contain4item1 = document.querySelector('.total:nth-child(2) .container:nth-child(4) .item:nth-child(2)')
+      const contain4item2 = document.querySelector('.total:nth-child(2) .container:nth-child(4) .item:nth-child(3)')
       if (event.target === contain1item2) {
         contain1item2.style.opacity = 1; 
       }
@@ -97,34 +91,39 @@
     
     window.addEventListener('keydown', function(event) {
       if (i !== 4 && event.keyCode === 39) {
-        const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
-        console.log(nowContainer)
-        i++;
-        const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
-        nowContainer.classList.remove('move-on');
-        nowContainer.classList.add('hidden-left');
-        nextContainer.classList.remove('hidden-right');
-        nextContainer.classList.add('move-on');
-      if (i === 2) {
-        setTimeout(nowPageRemove, 1000);
-      } 
-      console.log(i)
+        if (eventClick !== firstPage) {
+
+          const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
+          i++;
+          const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
+          nowContainer.classList.remove('move-on');
+          nowContainer.classList.add('hidden-left');
+          nextContainer.classList.remove('hidden-right');
+          nextContainer.classList.add('move-on');
+
+          if (i === 2) {
+            setTimeout(nowPageRemove, 1000);
+          } 
+
+        }
       };
     })
 
     window.addEventListener('keydown', function(event) {
       if (i !== 1 && event.keyCode === 37) {
-        const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
-        i--;
-        const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
-        nowContainer.classList.remove('move-on');
-        nowContainer.classList.add('hidden-right');
-        nextContainer.classList.remove('hidden-left');
-        nextContainer.classList.add('move-on');
-        if (i === 1) {
-          nowPage();
-      };
-      console.log(i)
+        if (eventClick !== firstPage) {
+
+          const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
+          i--;
+          const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
+          nowContainer.classList.remove('move-on');
+          nowContainer.classList.add('hidden-right');
+          nextContainer.classList.remove('hidden-left');
+          nextContainer.classList.add('move-on');
+          if (i === 1) {
+            nowPage();
+          };
+        }
       }
     })
 
@@ -164,39 +163,33 @@
       }
     
     }
-    
-    
-    
-    
-    
-    
+       
     // window.addEventListener('load', BlackToGreen);
    
     setTimeout(BlackToGreen, 1000)
     setTimeout(GreenToIntro, 4000)
     setTimeout(GridHover, 5000)
 
+
     window.addEventListener('keydown', function (event) {
       
       if (event.keyCode === 40 ) {
         i = 1;
         j++;
-        console.log(j);
         const nextTotal = document.querySelector(`.total:nth-child(${j})`);
-        console.log(nextTotal)
         eventClick.classList.remove('event-click');
         eventClick.classList.add('hidden-bottom');
-        nextTotal.classList.remove('hidden-bottom');
+        nextTotal.classList.remove('hidden-top');
         nextTotal.classList.add('move-on');
         nextTotal.classList.add('event-click')
+        eventClick = nextTotal;
         nowPage();
-        console.log(i)
+        eventClick.addEventListener('click', goRight);
+        eventClick.addEventListener('click', goLeft);
+        eventClick.addEventListener('mouseover', goDesription);
+        eventClick.addEventListener('mouseout', deleteDesription);
       } 
     });
-
-
-
-    
-    
+   
   })();
 
