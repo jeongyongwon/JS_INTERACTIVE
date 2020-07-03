@@ -87,7 +87,7 @@
     eventClick.addEventListener('mouseout', deleteDesription);
     
     window.addEventListener('keydown', function(event) {
-      if (i !== 4 && event.keyCode == 39) {
+      if (i !== 4 && event.keyCode === 39) {
         const nowContainer = document.querySelector(`.container:nth-child(${i})`);
         i++;
         const nextContainer = document.querySelector(`.container:nth-child(${i})`);
@@ -103,7 +103,7 @@
     })
 
     window.addEventListener('keydown', function(event) {
-      if (i !== 1 && event.keyCode == 37) {
+      if (i !== 1 && event.keyCode === 37) {
         const nowContainer = document.querySelector(`.container:nth-child(${i})`);
         i--;
         const nextContainer = document.querySelector(`.container:nth-child(${i})`);
