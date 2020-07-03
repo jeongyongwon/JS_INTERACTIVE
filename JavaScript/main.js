@@ -11,16 +11,17 @@
     const eventClick = document.querySelector('.event-click');
     const rightWall = document.querySelector('.right-wall');
     const containerInner = document.querySelector('.container-inner');
+    const firstPage = document.querySelector('.total')
     
 
     let i = 1;
     let j = 1;
 
     function goRight(event) {
-      const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+      const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
       if (event.target.classList.contains('right-wall') || event.target.parentNode.classList.contains('right-wall')) {
         i++;
-        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
         nowContainer.classList.remove('move-on');
         nowContainer.classList.add('hidden-left');
         nextContainer.classList.remove('hidden-right');
@@ -33,10 +34,10 @@
     };
   
     function goLeft(event) {
-      const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+      const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
       if (event.target.classList.contains('left-wall') || event.target.parentNode.classList.contains('left-wall')) {
         i--;
-        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
         nowContainer.classList.remove('move-on');
         nowContainer.classList.add('hidden-right');
         nextContainer.classList.remove('hidden-left');
@@ -96,9 +97,10 @@
     
     window.addEventListener('keydown', function(event) {
       if (i !== 4 && event.keyCode === 39) {
-        const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+        const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
+        console.log(nowContainer)
         i++;
-        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
         nowContainer.classList.remove('move-on');
         nowContainer.classList.add('hidden-left');
         nextContainer.classList.remove('hidden-right');
@@ -112,9 +114,9 @@
 
     window.addEventListener('keydown', function(event) {
       if (i !== 1 && event.keyCode === 37) {
-        const nowContainer = document.querySelector(`.container:nth-child(${i})`);
+        const nowContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
         i--;
-        const nextContainer = document.querySelector(`.container:nth-child(${i})`);
+        const nextContainer = document.querySelector(`.total:nth-child(${j}) .container:nth-child(${i})`);
         nowContainer.classList.remove('move-on');
         nowContainer.classList.add('hidden-right');
         nextContainer.classList.remove('hidden-left');
@@ -181,12 +183,14 @@
         j++;
         console.log(j);
         const nextTotal = document.querySelector(`.total:nth-child(${j})`);
+        console.log(nextTotal)
         eventClick.classList.remove('event-click');
         eventClick.classList.add('hidden-bottom');
         nextTotal.classList.remove('hidden-bottom');
         nextTotal.classList.add('move-on');
         nextTotal.classList.add('event-click')
         nowPage();
+        console.log(i)
       } 
     });
 
