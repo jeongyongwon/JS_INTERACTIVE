@@ -35,6 +35,7 @@
   width: 5vw;
   justify-content: center;
   align-items: center;
+  z-index : 1;
 }
 
 .arrow {
@@ -46,6 +47,16 @@
   font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+.hidden-top {
+  transition: 1s cubic-bezier(1,-0.07, 0.87, 0.9);
+  transform: translate(0, -100%);
+}
+
+.hidden-bottom {
+  transition: 1s cubic-bezier(1,-0.07, 0.87, 0.9);
+  transform: translate(0, 100%);
 }
 
 .hidden-right {
@@ -63,14 +74,100 @@
   transform: translate(0, 0);
 }
 
-/* 개별 class */
-/* total 두번째(봉규, 커피1)의 첫번째 container */
+.move-on2 {
+  transition: 0.5s cubic-bezier(0, 0, 0.03, 0.93);
+  transform: translate(0, 0);
+}
 
-.total:nth-child(2) .container:nth-child(1) {
+.text {
+  height: 100%;
+  opacity: 0.5;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text2 {
+  height: 100%;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  padding: 15px 0;
+}
+
+.info {
+  font-size: 30px;
+  color: white;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 개별 class */
+/* total 두번째(도희, goods)의 첫번째 container */
+.total:nth-child(1) .container:nth-child(1) {
   position: absolute;
   display: grid;
   background: black;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  left: 0;
+  top: 0;
+  grid-gap: 1rem;
+  width: 100vw; 
+  height: 100vh;
+}
+
+.total:nth-child(1) .container:nth-child(1) .item:nth-child(1) {
+  grid-row: 1/3;
+  background-image: url("../Image/bts/bts.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.total:nth-child(1) .container:nth-child(1) .item:nth-child(2) {
+  background-image: url("../Image/bts/bts-glass.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.total:nth-child(1) .container:nth-child(1) .item:nth-child(3) {
+  background-image: url("../Image/bts/bts-mug2.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.total:nth-child(1) .container:nth-child(1) .item:nth-child(4) {
+  position: relative;
+  grid-column: 2/4;
+}
+
+video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/*  total 두번째(도희, goods)의 두번째 container */
+
+.total:nth-child(1) .container:nth-child(2) {
+  position: absolute;
+  display: grid;
+  background: black;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   left: 0;
   top: 0;
   grid-gap: 0.5rem;
@@ -78,25 +175,136 @@
   height: 100vh;
 }
 
-.total:nth-child(2) .container:nth-child(1) .item:nth-child(1) {
+
+.total:nth-child(1) .container:nth-child(2) .item:nth-child(2) {
+  background-image: url("../Image/city/seoul.png");
+  grid-row: 1/3;
+  grid-column: 1/3;
+  background-size: cover;
+  background-position: center;
+}
+
+.total:nth-child(1) .container:nth-child(2) .item:nth-child(3) {
+  background-image: url("../Image/city/seoul-mug.jpg");
+  background-size: cover;
+}
+
+.total:nth-child(1) .container:nth-child(2) .item:nth-child(4) {
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.total:nth-child(1) .container:nth-child(2) .item:nth-child(5) {
+  overflow: hidden;
+  background-color: blue;
+}
+
+
+.total:nth-child(1) .container:nth-child(2) .item:nth-child(6) {
+  background-image: url("../Image/city/seoul-thum.jpg");
+  background-size: cover;
+}
+
+
+/*  total 두번째(도희, goods)의 세번째 container */
+
+.total:nth-child(1) .container:nth-child(3) {
+  position: absolute;
+  display: grid;
+  background: black;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  left: 0;
+  top: 0;
+  grid-gap: 0.5rem;
+  width: 100vw;
+  height: 100vh;
+}
+
+.total:nth-child(1) .container:nth-child(3) .item:nth-child(2) {
+  background-color: #CCEEFF;
+}
+
+.total:nth-child(1) .container:nth-child(3) .item:nth-child(3) {
+  background-image: url("../Image/city/incheon-mug.jpg");
+  background-size: cover;
+}
+
+.total:nth-child(1) .container:nth-child(3) .item:nth-child(4) {
+  background-image: url("../Image/city/incheon-thumb.jpg");
+  background-size: cover;
+}
+
+.total:nth-child(1) .container:nth-child(3) .item:nth-child(5) {
+  background-color: #CCEEFF;
+}
+
+.total:nth-child(1) .container:nth-child(3) .item:nth-child(6) {
+  grid-row: 1/3;
+  grid-column: 3/5;
+  background-image: url("../Image/city/incheon.png");
+  background-size: cover;
+}
+
+
+/* 4번째 */
+.total:nth-child(1) .container:nth-child(4) {
+  position: absolute;
+  display: grid;
+  background: black;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  left: 0;
+  top: 0;
+  grid-gap: 0.5rem;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.total:nth-child(1) .container:nth-child(4) .item:nth-child(2) {
+  background-image: url("../Image/city/busan.png");
+  grid-row: 1/3;
+  grid-column: 1/3;
+  background-size: cover;
+  background-position: center;
+
+}
+
+.total:nth-child(1) .container:nth-child(4) .item:nth-child(3) {
+  background-image: url("../Image/city/busan-mug.jpg");
+  background-size: cover;
+}
+
+.total:nth-child(1) .container:nth-child(4) .item:nth-child(4) {
   background: red;
 }
 
-.total:nth-child(2) .container:nth-child(1) .item:nth-child(2) {
-  background: dodgerblue;
+.total:nth-child(1) .container:nth-child(4) .item:nth-child(5) {
+  overflow: hidden;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.total:nth-child(2) .container:nth-child(1) .item:nth-child(3) {
-  background: pink;
+
+.total:nth-child(1) .container:nth-child(4) .item:nth-child(5) .text{
+  height: 100%;
+  opacity: 0.5;
 }
 
-/*  total 두번째(봉규, 커피1)의 두번째 container */
+.total:nth-child(1) .container:nth-child(4) .item:nth-child(6) {
+  background-image: url("../Image/city/busan-thumb.jpg");
+  background-size: cover;
+}
 
-.total:nth-child(2) .container:nth-child(2) {
+/* 5번째 */
+.total:nth-child(1) .container:nth-child(5) {
   position: absolute;
   display: grid;
   background: black;
-  grid-template-columns: 3fr 5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   left: 0;
   top: 0;
   grid-gap: 0.5rem;
@@ -104,42 +312,27 @@
   height: 100vh;
 }
 
-
-.total:nth-child(2) .container:nth-child(2) .item:nth-child(2) {
-  background: purple;
-}
-
-.total:nth-child(2) .container:nth-child(2) .item:nth-child(3) {
-  background: darkkhaki;
-}
-
-
-/*  total 두번째(봉규, 커피1)의 세번째 container */
-
-.total:nth-child(2) .container:nth-child(3) {
-  position: absolute;
-  display: grid;
-  background: black;
-  grid-template-columns: 1fr 2fr 3fr 4fr;
-  left: 0;
-  top: 0;
-  grid-gap: 0.5rem;
-  width: 100vw;
-  height: 100vh;
-}
-
-.total:nth-child(2) .container:nth-child(3) .item:nth-child(2) {
+.total:nth-child(1) .container:nth-child(5) .item:nth-child(2) {
   background: yellowgreen;
 }
 
-.total:nth-child(2) .container:nth-child(3) .item:nth-child(3) {
-  background: darkcyan;
+.total:nth-child(1) .container:nth-child(5) .item:nth-child(3) {
+  background-image: url("../Image/city/jeju-mug.jpg");
+  background-size: cover;
 }
 
-.total:nth-child(2) .container:nth-child(3) .item:nth-child(4) {
-  background: goldenrod;
+.total:nth-child(1) .container:nth-child(5) .item:nth-child(4) {
+  background-image: url("../Image/city/jeju-thumb.jpg");
+  background-size: cover;
 }
 
-.total:nth-child(2) .container:nth-child(3) .item:nth-child(5) {
-  background: fuchsia;
+.total:nth-child(1) .container:nth-child(5) .item:nth-child(5) {
+  background: yellowgreen;
+}
+
+.total:nth-child(1) .container:nth-child(5) .item:nth-child(6) {
+  grid-row: 1/3;
+  grid-column: 3/5;
+  background-image: url("../Image/city/jeju.png");
+  background-size: cover;
 }
