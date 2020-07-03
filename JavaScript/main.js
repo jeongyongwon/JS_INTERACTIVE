@@ -177,7 +177,6 @@
     window.addEventListener('keydown', function (event) {
       
       if (event.keyCode === 40 ) {
-        console.log('ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ')
         i = 1;
         j++;
         console.log(j);
